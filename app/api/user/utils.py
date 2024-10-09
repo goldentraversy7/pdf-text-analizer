@@ -1,7 +1,6 @@
 import csv
 from bs4 import BeautifulSoup
 from docx import Document
-import re
 import PyPDF2
 import json
 from datetime import datetime
@@ -10,17 +9,6 @@ from docx.shared import Pt
 from docx.oxml.shared import OxmlElement
 from docx.oxml.ns import qn
 from flask import session
-
-WORD = re.compile(r"\w+")
-# Descargar stopwords y tokenizer si no lo has hecho antesimport nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('punkt_tab')
-
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from collections import Counter
-import math
 import re
 
 def get_pdf_text(pdf_path):
@@ -54,6 +42,10 @@ def get_docx_text(file_path):
             full_content.append(content)
     
     return '\n'.join(full_content)
+
+def clean_text(str):
+    cite_pattern = r"【\d+†source】|【\d+:\d+†source】|【\d+:\d+†fuente】|【.*?】"
+    return re.sub(cite_pattern, "", str)
 
 def get_history(user, title=""):
     db = get_db()

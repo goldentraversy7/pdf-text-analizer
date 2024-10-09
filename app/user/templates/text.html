@@ -1,0 +1,110 @@
+{% extends "user_base.html" %} {% block title %}TextAnalizer{% endblock %} {%
+block content %}
+<!-- <div class="state-btn-group">
+  <button id="open_state" type="button" class="btn btn-light">Load</button>
+  <button id="save_state" type="button" class="btn btn-primary">Save</button>
+</div> -->
+
+<!-- About Section -->
+<section id="text" class="about section text-section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Text</h2>
+    <p id="title"></p>
+  </div>
+
+  <!-- End Section Title -->
+
+  <div class="container">
+    <div class="row gy-5">
+      <div
+        class="content col-xl-4 d-flex flex-column"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <div id="text_info_form">
+          <div class="mb-5 p-2">
+            <form
+              id="file_upload_form"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <label for="pdf_file" class="form-label"
+                >Upload Text file in .PDF</label
+              >
+              <input
+                class="form-control"
+                type="file"
+                id="pdf_file"
+                name="pdf_file"
+              />
+            </form>
+          </div>
+          <button id="analysis" type="button" class="btn btn-primary mb-3">
+            Analize
+          </button>
+          <button id="reset" type="button" class="btn btn-danger mb-3">
+            Reset
+          </button>
+        </div>
+      </div>
+      <div class="col-xl-8" data-aos="fade-up" data-aos-delay="200">
+        <div
+          class="row gy-4"
+          style="
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            height: 600px;
+          "
+        >
+          <div id="pdf_viewer">
+            <iframe id="hole_pdf_viewer" height="100%" width="100%"></iframe>
+          </div>
+          <div id="pdf_viewer_preloader" class="sub preloader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /About Section -->
+
+<!-- Resumen Section -->
+<section id="summary" class="services section text-section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Summary</h2>
+    <p>Summary of the text in PDF</p>
+  </div>
+  <!-- End Section Title -->
+  <div class="container summary-body">
+    <div class="reload-btn-panel" data-aos="fade-up" data-aos-delay="200">
+      <button class="icon-button reload-button" id="summary_reload">
+        <i class="bi bi-arrow-clockwise"></i>
+      </button>
+    </div>
+    <div class="col-xl-12" data-aos="fade-up" data-aos-delay="200">
+      <div
+        class="row gy-4"
+        style="
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          overflow-y: auto;
+          max-height: 600px;
+        "
+      >
+        <div id="summary_text"></div>
+      </div>
+    </div>
+  </div>
+  <div id="summary_preloader" class="sub preloader">
+    <button type="button" class="btn btn-danger mb-3 text-center text_stopbtn">
+      Stop
+    </button>
+  </div>
+</section>
+<!-- /Resumen Section -->
+{% endblock %} {% block jsContent %}
+<script src="{{ url_for('user.static', filename='assets/js/main.js') }}"></script>
+<script src="{{ url_for('user.static', filename='assets/js/text.js') }}"></script>
+{% endblock %}

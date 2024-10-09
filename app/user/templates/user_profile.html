@@ -1,0 +1,114 @@
+{% extends "user_base.html" %} {% block title %}TextAnalizer{% endblock %} {%
+block content %}
+<div class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-4 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+        {% if user.picture %}
+        <img class="rounded-circle mt-5" width="150px" src="{{user.picture}}" />
+        {% else %}
+        <img
+          class="rounded-circle mt-5"
+          width="150px"
+          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+        />
+        {% endif%}
+        <span class="font-weight-bold"
+          >{{user.given_name}} {{user.family_name}}</span
+        ><span class="text-black-50">{{user.email}}</span><span> </span>
+      </div>
+    </div>
+    <div class="col-md-8 border-right" id="profile_form">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Profile Settings</h4>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <label class="labels">Given Name</label
+            ><input
+              id="given_name"
+              type="text"
+              class="form-control"
+              placeholder=""
+              value="{{user.given_name}}"
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="labels">Family Name</label
+            ><input
+              id="family_name"
+              type="text"
+              class="form-control"
+              value="{{user.family_name}}"
+            />
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="labels">Mobile Number</label
+            ><input
+              id="phone_number"
+              type="text"
+              class="form-control"
+              placeholder="enter phone number"
+              value="{{user.phone_number}}"
+            />
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="labels">Address</label
+            ><input
+              id="address"
+              type="text"
+              class="form-control"
+              placeholder="enter address"
+              value="{{user.address}}"
+            />
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex justify-content-between align-items-center mt-5">
+          <h4 class="text-right">Change Password</h4>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="labels">Current Password</label
+            ><input
+              id="old_pwd"
+              type="password"
+              class="form-control"
+              value=""
+            />
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="labels">New Password</label
+            ><input
+              id="new_pwd"
+              type="password"
+              class="form-control"
+              value=""
+            />
+          </div>
+        </div>
+        <div class="mt-5 text-center">
+          <button
+            id="save_profile_btn"
+            class="btn btn-primary profile-button"
+            type="button"
+          >
+            Save Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Resultados Section -->
+{% endblock %} {% block jsContent %}
+<script src="{{ url_for('user.static', filename='assets/js/main.js') }}"></script>
+<script src="{{ url_for('user.static', filename='assets/js/profile.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "user_base.html" %} {% block content %}
+<div class="authincation h-100">
+  <div class="container-fluid h-100">
+    <div class="row justify-content-center h-100 align-items-center">
+      <div class="col-md-6">
+        <div class="authincation-content">
+          <div class="row no-gutters">
+            <div class="col-xl-12">
+              <div class="auth-form" style="margin-top: 100px">
+                <h4 class="text-center mb-4">Sign up your account</h4>
+                <div id="register-form">
+                  <div class="row">
+                    <div class="form-group mb-3 col-md-6">
+                      <label><strong>Given Name</strong></label>
+                      <input type="text" class="form-control" id="givenName" />
+                    </div>
+                    <div class="form-group mb-3 col-md-6">
+                      <label><strong>Family Name</strong></label>
+                      <input type="text" class="form-control" id="familyName" />
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <label><strong>Email</strong></label>
+                    <input type="email" class="form-control" id="email" />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label><strong>Password</strong></label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      value=""
+                      id="password"
+                    />
+                  </div>
+                  <div class="text-center mt-4">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-block col-12"
+                      id="user_register"
+                    >
+                      Sign me up
+                    </button>
+                  </div>
+                </div>
+                <div class="new-account mt-3">
+                  <p>
+                    Already have an account?
+                    <a class="text-primary" href="login">Sign in</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block jsContent%}
+
+<script src="{{ url_for('user.static', filename='assets/js/register.js') }}"></script>
+
+{% endblock %}

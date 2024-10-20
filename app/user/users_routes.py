@@ -230,7 +230,7 @@ def register_user():
                 <p>If you did not sign up for this account, you can safely ignore this email.</p>
             </div>
             <div style="margin-top: 20px; font-size: 12px; color: #777777; text-align: center;">
-                <p>&copy; TextAnalizer All Rights Reserved</p>
+                <p>&copy; TextAnalyzer All Rights Reserved</p>
             </div>
         </div>
         """
